@@ -1,4 +1,4 @@
-require('dotenv').config(); //umożliwia używanie dotenv w aplikacji
+require('dotenv').config(); //umożliwia używanie dotenv w aplikacji 
 
 const express = require('express'); //tworzy express server pod stałą express
 const expressLayout = require('express-ejs-layouts'); //ejs przesyła dane do widoku aplikacji
