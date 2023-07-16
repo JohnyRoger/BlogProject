@@ -3,7 +3,7 @@ require('dotenv').config(); //umożliwia używanie dotenv w aplikacji
 const express = require('express'); //tworzy express server pod stałą express
 const expressLayout = require('express-ejs-layouts'); //ejs przesyła dane do widoku aplikacji
 
-//tworzy baze danych
+//tworzy baze danych(zmienną)
 const connectDB = require('./server/config/db');
 
 const app = express(); //tworzy aplikacje express
