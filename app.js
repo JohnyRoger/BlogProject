@@ -11,6 +11,9 @@ const PORT = 5000 || process.env.PORT; //aplikacja express potrzebuje portu(usta
 
 connectDB();
 
+app.use(express.urlencoded({extended: true }));
+app.use(express.json());
+
 app.use(express.static('public'));
 
 
@@ -18,7 +21,7 @@ app.use(expressLayout);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
-app.use('/', require('./server/routes/main')); 
+app.use('/', require('./server/routes/main'));
 
 
 app.listen(PORT, ()=>{

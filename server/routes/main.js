@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 
-//ścieżki(Routes) GET:
+//ścieżki(Routes) GET method:
 router.get('', async (req, res) =>{
     try {
     const locals = {
@@ -34,11 +34,55 @@ router.get('', async (req, res) =>{
     }
 });
 
+router.get('/post/:id', async (req, res) => {
+    try {
+        const locals = {
+            title: "Blog", // data.title 
+            description:" tekst"
+        }
+        
+        let slug = req.params.id;
+
+        const data = await Post.findById({ _id: slug });
+        res.render('post', {locals, data});
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 
 router.get('/about', (req, res) =>{
     res.render('about');
 });
+
+// POST method:
+router.post('/search', async (req, res) =>{
+    try {
+        const locals = {
+            title: "Szukaj",
+            description: "Wyszukaj na stronie" 
+        }
+        
+        let searchTerm = req.body.searchTerm;
+        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9]/g, "")
+
+        const data = await Post.find({
+            $or: [
+                { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+                { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+            ]
+        });
+
+        res.render("search", {
+            data,
+            locals
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 
 module.exports = router
 
