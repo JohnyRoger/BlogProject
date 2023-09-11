@@ -3,19 +3,19 @@
   <h2>Wyświetl lub usuń post</h2>
 
   <form action="/delete-post/<%= data._id %>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete" class="btn-delete btn">
+    <input type="submit" value="Usuń" class="btn-delete btn">
   </form>
 
 </div>
 
 <form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
 
-  <label for="title"><b>Title</b></label>
+  <label for="title"><b>Tytuł</b></label>
   <input type="text" placeholder="Post" name="tytuł" value="<%= data.title %>">
 
-  <label for="body"><b>Content</b></label>
+  <label for="body"><b>Tekst</b></label>
   <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
 
-  <input type="submit" value="Update" class="btn">
+  <input type="submit" value="Aktualizuj" class="btn">
 
 </form>

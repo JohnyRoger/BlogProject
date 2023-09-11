@@ -8,7 +8,7 @@ npm i bcrypt connect-mongo cookie-parser dotenv ejs express express-ejs-layouts 
 oraz:
 npm i nodemon --save-dev
 
-w plik nv należy wrzucić ścieżkę lączącą z bazą danych:
+w plik env należy wrzucić ścieżkę lączącą z bazą danych:
 MONGODB_URI=mongodb+srv://ignacy:test123@cluster0.8pcshit.mongodb.net/
 
 

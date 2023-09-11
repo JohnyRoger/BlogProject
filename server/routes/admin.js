@@ -17,7 +17,7 @@ const authMiddleware = (req, res, next ) => {
   const token = req.cookies.token;
 
   if(!token) {
-    return res.status(401).json( { message: 'Unauthorized'} );
+    return res.status(401).json( { message: 'Brak autoryzacji'} );
   }
 
   try {
@@ -25,7 +25,7 @@ const authMiddleware = (req, res, next ) => {
     req.userId = decoded.userId;
     next();
   } catch(error) {
-    res.status(401).json( { message: 'Unauthorized'} );
+    res.status(401).json( { message: 'Brak autoryzacji'} );
   }
 }
 
@@ -111,7 +111,7 @@ router.get('/add-post', authMiddleware, async (req, res) => {
   try {
     const locals = {
       title: 'Dodaj nowy post',
-      description: 'Blogadd.'
+      description: 'Dodaj.'
     }
 
     const data = await Post.find();
@@ -246,7 +246,6 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
 */
 router.get('/logout', (req, res) => {
   res.clearCookie('token');
-  //res.json({ message: 'Logout successful.'});
   res.redirect('/');
 });
 

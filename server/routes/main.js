@@ -10,7 +10,7 @@ router.get('', async (req, res) => {
   try {
     const locals = {
       title: "Blog",
-      description: "AMG."
+      description: "Strona Główna."
     }
 
     let perPage = 10;
@@ -109,5 +109,7 @@ router.get('/about', (req, res) => {
     currentRoute: '/about'
   });
 });
+
+
 
 module.exports = router;
